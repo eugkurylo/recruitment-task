@@ -38,3 +38,10 @@ Required technologies for development are _React_ and _Typescript_.
 Send us back your app with instruction how to run app and tests. Preferred way is to get URL to codesandbox or your public repository with project. In case of problems/questions feel free to ask.
 
 **Good luck!**
+
+## How start Frontend side:
+
+1. Run API.
+2. Go in terminal to UI folder: `cd ui`.
+3. Run following command: `yarn install`.
+4. After run command: `yarn start`.
