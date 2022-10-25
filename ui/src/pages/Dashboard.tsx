@@ -7,7 +7,7 @@ import {
   StyledMainBox,
   StyledUpperBox,
 } from '../components/layout/StyledLayoutComponents';
-import FilteredTable from '../components/Table/Table';
+import TransactionsTable from '../components/TransactionsTable/TransactionsTable';
 import TableSearch from '../components/TableSearch/TableSearch';
 import TransactionForm from '../components/TransactionForm/TransactionForm';
 import { API_URL } from '../constants/constants';
@@ -76,7 +76,7 @@ const Dashboard = () => {
           </Box>
           <Box>
             {isDesktop ? (
-              <FilteredTable
+              <TransactionsTable
                 filteredTransactions={filteredTransactions}
                 deleteTransaction={deleteTransaction}
               />

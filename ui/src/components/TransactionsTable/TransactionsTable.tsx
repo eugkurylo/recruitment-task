@@ -15,12 +15,12 @@ import { formatDate } from '../../utils/formatDate';
 import { StyledTableCell, StyledTableRow } from './StyledTableComponents';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-type FilteredTableProps = {
+type TransactionsTableProps = {
   filteredTransactions: TransactionsType;
   deleteTransaction: (id: TransactionType['id']) => Promise<void>;
 };
 
-const FilteredTable: FC<FilteredTableProps> = ({ filteredTransactions, deleteTransaction }) => {
+const TransactionsTable: FC<TransactionsTableProps> = ({ filteredTransactions, deleteTransaction }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(20);
 
@@ -84,4 +84,4 @@ const FilteredTable: FC<FilteredTableProps> = ({ filteredTransactions, deleteTra
   );
 };
 
-export default FilteredTable;
+export default TransactionsTable;
