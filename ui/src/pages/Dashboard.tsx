@@ -13,6 +13,7 @@ import TransactionForm from '../components/TransactionForm/TransactionForm';
 import { API_URL } from '../constants/constants';
 import { TransactionsType, TransactionType } from '../types/transaction.types';
 import Drawer from '../components/layout/Drawer';
+import TransactionsAccordion from '../components/TransactionsAccordion/TransactionsAccordion';
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -73,11 +74,19 @@ const Dashboard = () => {
               />
             </StyledUpperBox>
           </Box>
-          <FilteredTable
-            filteredTransactions={filteredTransactions}
-            deleteTransaction={deleteTransaction}
-            isDesktop={isDesktop}
-          />
+          <Box>
+            {isDesktop ? (
+              <FilteredTable
+                filteredTransactions={filteredTransactions}
+                deleteTransaction={deleteTransaction}
+              />
+            ) : (
+              <TransactionsAccordion
+                transactions={filteredTransactions}
+                deleteTransaction={deleteTransaction}
+              />
+            )}
+          </Box>
         </StyledMainBox>
       </StyledPaper>
     </Drawer>

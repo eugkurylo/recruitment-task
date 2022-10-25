@@ -18,14 +18,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 type FilteredTableProps = {
   filteredTransactions: TransactionsType;
   deleteTransaction: (id: TransactionType['id']) => Promise<void>;
-  isDesktop: boolean;
 };
 
-const FilteredTable: FC<FilteredTableProps> = ({
-  filteredTransactions,
-  deleteTransaction,
-  isDesktop,
-}) => {
+const FilteredTable: FC<FilteredTableProps> = ({ filteredTransactions, deleteTransaction }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(20);
 
@@ -40,14 +35,14 @@ const FilteredTable: FC<FilteredTableProps> = ({
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: isDesktop ? 650 : 100 }}>
+      <Table sx={{ minWidth: 650 }}>
         <TableHead>
           <TableRow>
             <StyledTableCell>Beneficiary</StyledTableCell>
-            {isDesktop && <StyledTableCell>Account</StyledTableCell>}
-            {isDesktop && <StyledTableCell>Address</StyledTableCell>}
-            {isDesktop && <StyledTableCell>Date</StyledTableCell>}
-            {isDesktop && <StyledTableCell>Description</StyledTableCell>}
+            <StyledTableCell>Account</StyledTableCell>
+            <StyledTableCell>Address</StyledTableCell>
+            <StyledTableCell>Date</StyledTableCell>
+            <StyledTableCell>Description</StyledTableCell>
             <StyledTableCell>Amount</StyledTableCell>
             <StyledTableCell />
           </TableRow>
@@ -58,14 +53,14 @@ const FilteredTable: FC<FilteredTableProps> = ({
             .map((transaction: TransactionType) => (
               <StyledTableRow key={transaction.id}>
                 <StyledTableCell>{transaction.beneficiary}</StyledTableCell>
-                {isDesktop && <StyledTableCell>{transaction.account}</StyledTableCell>}
-                {isDesktop && <StyledTableCell>{transaction.address}</StyledTableCell>}
-                {isDesktop && (
-                  <StyledTableCell>
-                    {formatDate(transaction.date, DATE_TIME_WITHOUT_ZONE_FORMAT)}
-                  </StyledTableCell>
-                )}
-                {isDesktop && <StyledTableCell>{transaction.description}</StyledTableCell>}
+                <StyledTableCell>{transaction.account}</StyledTableCell>
+                <StyledTableCell>{transaction.address}</StyledTableCell>
+
+                <StyledTableCell>
+                  {formatDate(transaction.date, DATE_TIME_WITHOUT_ZONE_FORMAT)}
+                </StyledTableCell>
+
+                <StyledTableCell>{transaction.description}</StyledTableCell>
                 <StyledTableCell>{transaction.amount}</StyledTableCell>
                 <StyledTableCell>
                   <IconButton onClick={() => deleteTransaction(transaction.id)}>
@@ -84,11 +79,6 @@ const FilteredTable: FC<FilteredTableProps> = ({
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
-        sx={{
-          '.MuiTablePagination-selectLabel': {
-            display: isDesktop ? 'block' : 'none',
-          },
-        }}
       />
     </TableContainer>
   );
